@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = '10.0'
 
   s.source       = {
-    git: 'https://github.com/facebook/facebook-ios-sdk.git',
+    git: 'https://github.com/Cambly/facebook-ios-sdk',
     tag: "v#{s.version}"
   }
 
