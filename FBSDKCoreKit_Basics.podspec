@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
   s.name         = 'FBSDKCoreKit_Basics'
-  s.version      = '11.0.2c'
+  s.version      = '11.0.2.c'
   s.summary      = 'The kernal module for the Core Facebook SDK'
 
   s.description  = <<-DESC
