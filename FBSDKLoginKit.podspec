@@ -43,8 +43,8 @@ Pod::Spec.new do |s|
   }
 
   s.subspec 'Login' do |ss|
-    ss.dependency 'FBSDKCoreKit_Basics', "~> #{s.version}"
-    ss.dependency 'FBSDKCoreKit', "~> #{s.version}"
+    ss.dependency 'FBSDKCoreKit_Basics', git: 'https://github.com/Cambly/facebook-ios-sdk', tag: "v#{s.version}"
+    ss.dependency 'FBSDKCoreKit', git: 'https://github.com/Cambly/facebook-ios-sdk', tag: "v#{s.version}"
     ss.exclude_files = 'FBSDKLoginKit/FBSDKLoginKit/include/**/*',
                        'FBSDKLoginKit/FBSDKLoginKit/Swift/Exports.swift'
     ss.source_files   = 'FBSDKLoginKit/FBSDKLoginKit/**/*.{h,m,swift}'
