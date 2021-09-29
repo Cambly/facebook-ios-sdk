@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
   s.name         = 'FBSDKCoreKit'
-  s.version      = '11.2.1'
+  s.version      = '11.2.1000'
   s.summary      = 'Official Facebook SDK for iOS to access Facebook Platform core features'
 
   s.description  = <<-DESC
@@ -22,11 +22,11 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = '10.0'
 
   s.source       = {
-    git: 'https://github.com/facebook/facebook-ios-sdk.git',
+    git: 'https://github.com/Cambly/facebook-ios-sdk.git',
     tag: "v#{s.version}"
   }
 
-  s.ios.weak_frameworks = 'Accelerate', 'Accounts', 'AdSupport', 'Social', 'Security', 'StoreKit', 'QuartzCore', 'CoreGraphics', 'UIKit', 'Foundation', 'AudioToolbox'
+  s.ios.weak_frameworks = 'Accelerate', 'Accounts', 'Social', 'Security', 'StoreKit', 'QuartzCore', 'CoreGraphics', 'UIKit', 'Foundation', 'AudioToolbox'
   s.tvos.weak_frameworks = 'CoreLocation', 'Security', 'QuartzCore', 'CoreGraphics', 'UIKit', 'Foundation', 'AudioToolbox'
 
   s.default_subspecs = 'Core'
