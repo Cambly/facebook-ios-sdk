@@ -19,7 +19,9 @@
 @objcMembers
 class TestDylibResolver: NSObject, FBSDKDynamicFrameworkResolving {
   var stubSafariViewControllerClass: AnyClass?
-  var stubbedASIdentifierManagerClass: AnyClass?
+// CAMBLY REMOVED - START
+//  var stubbedASIdentifierManagerClass: AnyClass?
+// CAMBLY REMOVED - END
   var didLoadIdentifierManagerClass = false
   var didLoadSafariViewControllerClass = false
 
@@ -28,8 +30,10 @@ class TestDylibResolver: NSObject, FBSDKDynamicFrameworkResolving {
     return stubSafariViewControllerClass
   }
 
-  func asIdentifierManagerClass() -> AnyClass? {
-    didLoadIdentifierManagerClass = true
-    return stubbedASIdentifierManagerClass
-  }
+// CAMBLY REMOVED - START
+//  func asIdentifierManagerClass() -> AnyClass? {
+//    didLoadIdentifierManagerClass = true
+//    return stubbedASIdentifierManagerClass
+//  }
+//
 }

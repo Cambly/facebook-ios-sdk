@@ -18,7 +18,9 @@
 
 #import "FBSDKSettings+Internal.h"
 
-#import <AdSupport/AdSupport.h>
+// CAMBLY REMOVED - START
+//#import <AdSupport/AdSupport.h>
+// CAMBLY REMOVED - END
 
 #import "FBSDKAppEventsConfigurationProtocol.h"
 #import "FBSDKAppEventsConfigurationProviding.h"
@@ -327,7 +329,12 @@ FBSDKSETTINGS_PLIST_CONFIGURATION_SETTING_IMPL(
     return self.advertiserTrackingStatusBacking.unsignedIntegerValue;
   } else {
     // @lint-ignore CLANGTIDY
-    return ASIdentifierManager.sharedManager.advertisingTrackingEnabled ? FBSDKAdvertisingTrackingAllowed : FBSDKAdvertisingTrackingDisallowed;
+    // CAMBLY REMOVED - START
+    // return ASIdentifierManager.sharedManager.advertisingTrackingEnabled ? FBSDKAdvertisingTrackingAllowed : FBSDKAdvertisingTrackingDisallowed;
+     // CAMBLY REMOVED - END
+    // CAMBLY ADDED - START
+    return FBSDKAdvertisingTrackingDisallowed;
+    // CAMBLY ADDED - END
   }
 }
 

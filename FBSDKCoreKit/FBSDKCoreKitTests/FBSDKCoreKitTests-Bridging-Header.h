@@ -16,7 +16,9 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import <AdSupport/AdSupport.h>
+// CAMBLY REMOVED - START
+//#import <AdSupport/AdSupport.h>
+// CAMBLY REMOVED - END
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <TestTools/FBSDKTestCoder.h>
 

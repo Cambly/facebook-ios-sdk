@@ -21,7 +21,9 @@
 
 #import "FBSDKAppEventsUtilityTests.h"
 
-#import <AdSupport/AdSupport.h>
+// CAMBLY REMOVED - START
+//#import <AdSupport/AdSupport.h>
+// CAMBLY REMOVED - END
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
@@ -31,22 +33,22 @@
 
 static NSString *const FBSDKSettingsInstallTimestamp = @"com.facebook.sdk:FBSDKSettingsInstallTimestamp";
 static NSString *const FBSDKSettingsAdvertisingTrackingStatus = @"com.facebook.sdk:FBSDKSettingsAdvertisingTrackingStatus";
-
-@interface TestASIdentifierManager : ASIdentifierManager
-
-@property (nonatomic) NSUUID *stubbedAdvertisingIdentifier;
-
-@end
-
-@implementation TestASIdentifierManager
-
-- (NSUUID *)advertisingIdentifier
-{
-  return self.stubbedAdvertisingIdentifier;
-}
-
-@end
-
+// CAMBLY REMOVED - START
+//@interface TestASIdentifierManager : ASIdentifierManager
+//
+//@property (nonatomic) NSUUID *stubbedAdvertisingIdentifier;
+//
+//@end
+//
+//@implementation TestASIdentifierManager
+//
+//- (NSUUID *)advertisingIdentifier
+//{
+//  return self.stubbedAdvertisingIdentifier;
+//}
+//
+//@end
+// CAMBLY REMOVED - END
 @interface FBSDKAppEvents (Testing)
 
 + (void)setSingletonInstanceToInstance:(FBSDKAppEvents *)appEvents;

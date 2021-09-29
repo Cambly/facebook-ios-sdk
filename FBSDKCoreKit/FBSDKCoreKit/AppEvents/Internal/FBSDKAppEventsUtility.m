@@ -18,8 +18,9 @@
 
 #import "FBSDKAppEventsUtility.h"
 
-#import <AdSupport/AdSupport.h>
-
+// CAMBLY REMOVED - START
+//#import <AdSupport/AdSupport.h>
+// CAMBLY REMOVED - END
 #import <objc/runtime.h>
 
 #import "FBSDKAccessToken.h"
@@ -41,7 +42,9 @@
 #define FBSDK_APPEVENTSUTILITY_MAX_IDENTIFIER_LENGTH 40
 
 static NSArray<NSString *> *standardEvents;
-static ASIdentifierManager *_cachedAdvertiserIdentifierManager;
+// CAMBLY REMOVED - START
+// static ASIdentifierManager *_cachedAdvertiserIdentifierManager;
+// CAMBLY REMOVED - END
 
 @implementation FBSDKAppEventsUtility
 
@@ -161,46 +164,54 @@ static ASIdentifierManager *_cachedAdvertiserIdentifierManager;
 
 - (NSString *)advertiserID
 {
-  BOOL shouldUseCachedManagerIfAvailable = [FBSDKSettings shouldUseCachedValuesForExpensiveMetadata];
-  id<FBSDKDynamicFrameworkResolving> dynamicFrameworkResolver = FBSDKDynamicFrameworkLoader.shared;
-  return [self _advertiserIDFromDynamicFrameworkResolver:dynamicFrameworkResolver
-                                  shouldUseCachedManager:shouldUseCachedManagerIfAvailable];
+  // CAMBLY REMOVED - START
+//  BOOL shouldUseCachedManagerIfAvailable = [FBSDKSettings shouldUseCachedValuesForExpensiveMetadata];
+//  id<FBSDKDynamicFrameworkResolving> dynamicFrameworkResolver = FBSDKDynamicFrameworkLoader.shared;
+//  return [self _advertiserIDFromDynamicFrameworkResolver:dynamicFrameworkResolver
+//                                  shouldUseCachedManager:shouldUseCachedManagerIfAvailable];
+  // CAMBLY REMOVED - END
+
+  // CAMBLY ADDED - START
+  return nil;
+  // CAMBLY END - START
 }
 
-- (NSString *)_advertiserIDFromDynamicFrameworkResolver:(id<FBSDKDynamicFrameworkResolving>)dynamicFrameworkResolver
-                                 shouldUseCachedManager:(BOOL)shouldUseCachedManager
-{
-  if (!FBSDKSettings.isAdvertiserIDCollectionEnabled) {
-    return nil;
-  }
-
-  if (@available(iOS 14.0, *)) {
-    if (![FBSDKAppEventsConfigurationManager cachedAppEventsConfiguration].advertiserIDCollectionEnabled) {
-      return nil;
-    }
-  }
-
-  ASIdentifierManager *manager = [self _asIdentifierManagerWithShouldUseCachedManager:shouldUseCachedManager
-                                                             dynamicFrameworkResolver:dynamicFrameworkResolver];
-  return manager.advertisingIdentifier.UUIDString;
-}
-
-- (ASIdentifierManager *)_asIdentifierManagerWithShouldUseCachedManager:(BOOL)shouldUseCachedManager
-                                               dynamicFrameworkResolver:(id<FBSDKDynamicFrameworkResolving>)dynamicFrameworkResolver
-{
-  if (shouldUseCachedManager && _cachedAdvertiserIdentifierManager) {
-    return _cachedAdvertiserIdentifierManager;
-  }
-
-  Class ASIdentifierManagerClass = [dynamicFrameworkResolver asIdentifierManagerClass];
-  ASIdentifierManager *manager = [ASIdentifierManagerClass sharedManager];
-  if (shouldUseCachedManager) {
-    _cachedAdvertiserIdentifierManager = manager;
-  } else {
-    _cachedAdvertiserIdentifierManager = nil;
-  }
-  return manager;
-}
+// CAMBLY REMOVED - START
+//- (NSString *)_advertiserIDFromDynamicFrameworkResolver:(id<FBSDKDynamicFrameworkResolving>)dynamicFrameworkResolver
+//                                 shouldUseCachedManager:(BOOL)shouldUseCachedManager
+//{
+//  if (!FBSDKSettings.isAdvertiserIDCollectionEnabled) {
+//    return nil;
+//  }
+//
+//  if (@available(iOS 14.0, *)) {
+//    if (![FBSDKAppEventsConfigurationManager cachedAppEventsConfiguration].advertiserIDCollectionEnabled) {
+//      return nil;
+//    }
+//  }
+//
+//  ASIdentifierManager *manager = [self _asIdentifierManagerWithShouldUseCachedManager:shouldUseCachedManager
+//                                                             dynamicFrameworkResolver:dynamicFrameworkResolver];
+//  return manager.advertisingIdentifier.UUIDString;
+//}
+//
+//- (ASIdentifierManager *)_asIdentifierManagerWithShouldUseCachedManager:(BOOL)shouldUseCachedManager
+//                                               dynamicFrameworkResolver:(id<FBSDKDynamicFrameworkResolving>)dynamicFrameworkResolver
+//{
+//  if (shouldUseCachedManager && _cachedAdvertiserIdentifierManager) {
+//    return _cachedAdvertiserIdentifierManager;
+//  }
+//
+//  Class ASIdentifierManagerClass = [dynamicFrameworkResolver asIdentifierManagerClass];
+//  ASIdentifierManager *manager = [ASIdentifierManagerClass sharedManager];
+//  if (shouldUseCachedManager) {
+//    _cachedAdvertiserIdentifierManager = manager;
+//  } else {
+//    _cachedAdvertiserIdentifierManager = nil;
+//  }
+//  return manager;
+//}
+// CAMBLY REMOVED - END
 
 + (BOOL)isStandardEvent:(nullable NSString *)event
 {
@@ -473,17 +484,17 @@ static ASIdentifierManager *_cachedAdvertiserIdentifierManager;
 
 #if DEBUG
  #if FBTEST
-
-+ (ASIdentifierManager *)cachedAdvertiserIdentifierManager
-{
-  return _cachedAdvertiserIdentifierManager;
-}
-
-+ (void)setCachedAdvertiserIdentifierManager:(ASIdentifierManager *)manager
-{
-  _cachedAdvertiserIdentifierManager = manager;
-}
-
+// CAMBLY REMOVED - START
+//+ (ASIdentifierManager *)cachedAdvertiserIdentifierManager
+//{
+//  return _cachedAdvertiserIdentifierManager;
+//}
+//
+//+ (void)setCachedAdvertiserIdentifierManager:(ASIdentifierManager *)manager
+//{
+//  _cachedAdvertiserIdentifierManager = manager;
+//}
+// CAMBLY REMOVED - END
  #endif
 #endif
 

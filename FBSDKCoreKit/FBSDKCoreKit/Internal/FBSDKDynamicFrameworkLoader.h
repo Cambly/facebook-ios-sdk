@@ -46,10 +46,11 @@ FOUNDATION_EXPORT CATransform3D fbsdkdfl_CATransform3DMakeTranslation (CGFloat t
 FOUNDATION_EXPORT CATransform3D fbsdkdfl_CATransform3DConcat (CATransform3D a, CATransform3D b);
 
 FOUNDATION_EXPORT const CATransform3D fbsdkdfl_CATransform3DIdentity;
-
-#pragma mark - AdSupport Classes
-
-FOUNDATION_EXPORT Class fbsdkdfl_ASIdentifierManagerClass(void);
+// CAMBLY REMOVED - START
+//#pragma mark - AdSupport Classes
+//
+//FOUNDATION_EXPORT Class fbsdkdfl_ASIdentifierManagerClass(void);
+// CAMBLY REMOVED - END
 
 #pragma mark - SafariServices Classes
 

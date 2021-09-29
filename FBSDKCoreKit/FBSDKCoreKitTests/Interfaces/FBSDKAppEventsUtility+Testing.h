@@ -21,13 +21,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FBSDKAppEventsUtility (Testing)
-
-@property (nullable, class, nonatomic) ASIdentifierManager *cachedAdvertiserIdentifierManager;
-
-- (ASIdentifierManager *)_asIdentifierManagerWithShouldUseCachedManager:(BOOL)useCachedManagerIfAvailable
-                                               dynamicFrameworkResolver:(id<FBSDKDynamicFrameworkResolving>)dynamicFrameworkResolver
-NS_SWIFT_NAME(asIdentifierManager(shouldUseCachedManager:dynamicFrameworkResolver:));
-
+// CAMBLY REMOVED - START
+//@property (nullable, class, nonatomic) ASIdentifierManager *cachedAdvertiserIdentifierManager;
+//
+//- (ASIdentifierManager *)_asIdentifierManagerWithShouldUseCachedManager:(BOOL)useCachedManagerIfAvailable
+//                                               dynamicFrameworkResolver:(id<FBSDKDynamicFrameworkResolving>)dynamicFrameworkResolver
+//NS_SWIFT_NAME(asIdentifierManager(shouldUseCachedManager:dynamicFrameworkResolver:));
+// CAMBLY REMOVED - START
 @end
 
 NS_ASSUME_NONNULL_END
