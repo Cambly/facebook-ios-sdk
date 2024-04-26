@@ -19,29 +19,29 @@
 
 killall Xcode || true
 
-if command -v xcodegen >/dev/null; then
+if command -v mint run xcodegen >/dev/null; then
     cd FBSDKCoreKit_Basics || exit
-    xcodegen generate
+    mint run xcodegen generate
 
     cd ..
 
     cd FBSDKCoreKit || exit
-    xcodegen generate
+    mint run xcodegen generate
 
     cd ..
 
     cd FBSDKLoginKit || exit
-    xcodegen generate
+    mint run xcodegen generate
 
     cd ..
 
     cd FBSDKShareKit || exit
-    xcodegen generate
+    mint run xcodegen generate
 
     cd ..
 
     cd FBSDKGamingServicesKit || exit
-    xcodegen generate
+    mint run xcodegen generate
 else
     echo "WARNING: Xcodegen not installed, run 'brew install xcodegen' or visit https://github.com/yonaskolb/XcodeGen"
 fi
