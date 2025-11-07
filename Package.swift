@@ -28,60 +28,34 @@ let package = Package(
         .tvOS(.v10)
     ],
     products: [
-        // MARK: - Core SDK (Swift)
-        // The Core SDK library that provides modern Swift interface
+        // MARK: - Core SDK
+        // The Core SDK library that provides two importable modules:
+        // - FacebookCore: Modern Swift interface with new features
+        // - FBSDKCoreKit: Legacy Objective-C interface for backwards compatibility
         .library(
             name: "FacebookCore",
-            targets: ["FacebookCore"]
+            targets: ["FacebookCore", "FBSDKCoreKit"]
         ),
         
-        // MARK: - Core SDK (Objective-C)
-        // Legacy Objective-C interface for backwards compatibility
-        .library(
-            name: "FBSDKCoreKit",
-            targets: ["FBSDKCoreKit"]
-        ),
-        
-        // MARK: - Login SDK (Swift)
-        // Facebook Login SDK - Swift interface
+        // MARK: - Login SDK
+        // Facebook Login SDK
         .library(
             name: "FacebookLogin",
             targets: ["FacebookLogin"]
         ),
         
-        // MARK: - Login SDK (Objective-C)
-        // Facebook Login SDK - Objective-C interface
-        .library(
-            name: "FBSDKLoginKit",
-            targets: ["FBSDKLoginKit"]
-        ),
-        
-        // MARK: - Share SDK (Swift)
-        // Facebook Share SDK - Swift interface
+        // MARK: - Share SDK
+        // Facebook Share SDK
         .library(
             name: "FacebookShare",
             targets: ["FacebookShare"]
         ),
         
-        // MARK: - Share SDK (Objective-C)
-        // Facebook Share SDK - Objective-C interface
-        .library(
-            name: "FBSDKShareKit",
-            targets: ["FBSDKShareKit"]
-        ),
-        
-        // MARK: - Gaming Services SDK (Swift)
-        // Facebook Gaming Services SDK - Swift interface
+        // MARK: - Gaming Services SDK
+        // Facebook Gaming Services SDK
         .library(
             name: "FacebookGamingServices",
             targets: ["FacebookGamingServices"]
-        ),
-        
-        // MARK: - Gaming Services SDK (Objective-C)
-        // Facebook Gaming Services SDK - Objective-C interface
-        .library(
-            name: "FBSDKGamingServicesKit",
-            targets: ["FBSDKGamingServicesKit"]
         ),
         
         // MARK: - TVOS SDK
@@ -194,23 +168,9 @@ let package = Package(
         // The legacy Objective-C interface wrapper
         .target(
             name: "FBSDKCoreKit",
-            dependencies: ["LegacyCoreKit"],
-            path: "FBSDKCoreKit/FBSDKCoreKit",
-            exclude: [
-                "AppEvents",
-                "AppLink",
-                "GraphAPI",
-                "Internal",
-                "Info.plist",
-                "FBSDKCoreKit.modulemap",
-                "PrivacyInfo.xcprivacy",
-                "FacebookSDKStrings.bundle"
-            ],
-            sources: [],
-            publicHeadersPath: "include",
+            dependencies: ["LegacyCoreKit", "FacebookCore"],
+            path: "FBSDKCoreKit/FBSDKCoreKit/include",
             cSettings: [
-                .headerSearchPath("."),
-                .headerSearchPath("Internal"),
                 .define("FBSDK_SWIFT_PACKAGE")
             ]
         ),
@@ -219,16 +179,16 @@ let package = Package(
         // The legacy Objective-C implementation for Login
         .target(
             name: "FBSDKLoginKit",
-            dependencies: ["LegacyCoreKit"],
+            dependencies: ["FBSDKCoreKit"],
             path: "FBSDKLoginKit/FBSDKLoginKit",
             exclude: [
                 "Swift",
+                "include",
                 "Info.plist",
                 "FBSDKLoginKit.modulemap",
                 "PrivacyInfo.xcprivacy"
             ],
             sources: [".", "Internal"],
-            publicHeadersPath: "include",
             cSettings: [
                 .headerSearchPath("."),
                 .headerSearchPath("Internal"),
